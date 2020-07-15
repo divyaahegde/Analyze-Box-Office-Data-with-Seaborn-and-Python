@@ -107,6 +107,9 @@ In this section, we will create a **wordcloud** which is a **qualitative** way o
 
 `wordcloud = WordCloud(max_font_size=None, background_color='white', width=1200, height=1000).generate(text)` 
 
+![image](https://user-images.githubusercontent.com/66896597/87550236-77936d80-c6cc-11ea-8124-c5db844e1039.png)
+
+
 Now do the same for film descriptions. Make sure you fill the null values in the *overview* column with an empty string to not generate error messages when creating a wordcloud for the film description. Therefore we can conclude that larger the word size, more frequent the word occurred.
 
 ## 7. Do Film Descriptions Impact Revenue?
