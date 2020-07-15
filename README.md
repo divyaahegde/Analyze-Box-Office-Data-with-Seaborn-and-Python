@@ -76,13 +76,13 @@ So what we can do is use seaborn to create a subplot of two plots side by side w
 We can all agree that in most cases, there is a correlation between the budget of a film and the revenue generated. If the film had a higher budget, it would probably generate a higher revenue or maybe vice-versa. In this segment we can find out correlation between the two and the degree of correlation using the given data.
 
 
-A scatterplot `sns.scatterplot(train['budget'], train['revenue'])` is used to figure out the relation between the revenue and budget. We cannot really figure out the relation. Now we compare the log transformed budget and revenue to check for a relation between the two.
+A scatterplot `sns.scatterplot(train['budget'], train['revenue'])` is used to figure out the relation between the revenue and budget but we cannot really figure out the relation. So, we compare the log transformed budget and revenue to check for a relation between the two and we can clearly see the relation between log transformed revenue and budget.
 
 ![download (2)](https://user-images.githubusercontent.com/66896597/87536700-22009600-c6b7-11ea-8e65-6a383f159202.png)
 
 ## 4. Does having an official homepage affect the revenue?
 
-With `train['homepage'].value_counts()` we calculate the unique number of homepages for each film. Then we use this to create another feature called occurence of a homepage    with binary values which is used to indicate the presence or absence of a homapage. 
+With `train['homepage'].value_counts()` we calculate the unique number of homepages for each film. Then we use this to create another feature called occurence of a homepage    `train['has_homepage']` with binary values which is used to indicate the presence or absence of a homapage. 
 
 We use **.loc** to find out if a particular film has a homepage. This can be done by comparing its `isnull()== False`. If this condition is satisfied, it means that that film has a homepage and we assign it with 1.
 
@@ -94,8 +94,17 @@ From the figure, we find out that films without a homepage *(left)* generate a l
 
 ## 5. Distribution of Languages in Films
 
-In this section, we will find out the distribution of languages in film. We will do this by locating a column *original_language* from the train dataset and filter in only those languages which are common using the function **value_counts()** from pandas like we did in the previous section and store all this data in a variable *language_data*. now we can plot the revenue vs language distribution using boxplots. Boxplot is a great way to identify outliers if there exist any. As per usual, we will be plotting two subplots. Here we are taking a look at mean revenue per language in a film. We can compare it to the subplot which will be log_revenue per language in a film. 
+In this section, we will find out the distribution of languages in films. We will do this by locating a column *original_language* from the train dataset and filter in only those languages which are common using the function **value_counts()** from pandas like we did in the previous section and store all this data in a variable *language_data*. now we can plot the revenue vs language distribution using boxplots. Boxplot is a great way to identify outliers if there exist any. As per usual, we will be plotting two subplots. Here we are taking a look at mean revenue per language in a film. We can compare it to the subplot which will be log_revenue per language in a film. 
 
+```python
+plt.figure(figsize=(16, 8))
+plt.subplot(1, 2, 1)
+sns.boxplot(x='original_language', y='revenue', data=train.loc[train['original_language'].isin(train['original_language'].value_counts().head(10).index)]);
+plt.title('Mean revenue per language');
+plt.subplot(1, 2, 2)
+sns.boxplot(x='original_language', y='log_revenue', data=train.loc[train['original_language'].isin(train['original_language'].value_counts().head(10).index)]);
+plt.title('Mean log revenue per language');
+```
 
 ![image](https://user-images.githubusercontent.com/66896597/87542043-e8805880-c6bf-11ea-9b3f-5f1a84da1fe1.png)
 
@@ -103,7 +112,11 @@ When we look at the plot on the left, it gives us a biased opinion that the only
 
 ## 6. Distribution/Frequency of Words used in Titles and Descriptions
 
-In this section, we will create a **wordcloud** which is a **qualitative** way of telling that more frequently occuring words will be larger in size compared to those that occur less frequently. To find the words across our film titles, we can use simple text manipulation like `text = ' '.join(train['original_title'].values)`. Now use the wordcloud function and setup details such as font size, background color etc. and then use the generate function to create the most frequently occured words. 
+In this section, we will create a **wordcloud** which is a **qualitative** way of telling that more frequently occuring words will be larger in size compared to those that occur less frequently. To find the words across our film titles, we can use simple text manipulation like
+
+`text = ' '.join(train['original_title'].values)`
+
+Now use the wordcloud function and setup details such as font size, background color etc. and then use the generate function to create the most frequently occured words. 
 
 `wordcloud = WordCloud(max_font_size=None, background_color='white', width=1200, height=1000).generate(text)` 
 
