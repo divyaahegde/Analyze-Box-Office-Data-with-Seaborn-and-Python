@@ -82,6 +82,16 @@ A scatterplot `sns.scatterplot(train['budget'], train['revenue'])` is used to fi
 
 ![download (2)](https://user-images.githubusercontent.com/66896597/87536700-22009600-c6b7-11ea-8e65-6a383f159202.png)
 
+### Does having an official homepage affect the revenue?
+
+With `train['homepage'].value_counts()` we calculate the unique number of homepages for each film. Then we use this to create another feature called occurence of a homepage    with binary values which is used to indicate the presence or absence of a homapage. 
+
+We use **.loc** to find out if a particular film has a homepage. This can be done by comparing its `isnull()== False`. If this condition is satisfied, it means that that film has a homepage and we assign it with 1.
+
+As train['has_homepage'] is a categorical function, we can use catplot from seaborn to create our visualization. 
+
+From the figure, we find out that films without a homepage *(left)* generate a lower revenue compared to the ones with a homepage *(right)*.
+
 
 
 
