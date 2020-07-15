@@ -65,7 +65,23 @@ Type in `train.head()` to have a look at the dataset. Since this is a regression
 
 ```
 
-After plotting a histogram of the target column revenue using `train.revenue.hist()`, we can observe how skewed the distribution is. What we want to do is normalize this by taking the **logarithm of this distribution**.
+After plotting a histogram of the target column revenue using `train.revenue.hist()`, we can observe how skewed the distribution is (not shown here, type in the given code and verify). What we want to do is normalize this by taking the **logarithm of this distribution**.
 
 So what we can do is use seaborn to create a subplot of two plots side by side where we have the original target distribution and the logarithmic distribution to compare. In most regression problems, you want your target column to ideally be normally distributed for the model to perform better.
+
+`plt.subplot(1, 2, 1)` indicates **1** plot, **2** columns and **1** row (*first subplot*). The `kde= False` is taken to ensure no kernel density estimate is overlayed on top of the histogram. For the second subplot, we use the helper function from the numpy library 'log1p' because if we have some zero inputs/dataset, we don't get NaN or infinity as error values. After plotting the log values, we can observe that they are not as skewed, hence making it easier to work with. Create a new feature **train['log_revenue']** containing log values of the revenue column.
+
+### Analyzing the Budget with Film revenue
+
+We can all agree that in most cases, there is a correlation between the budget of a film and the revenue generated. If the film had a higher budget, it would probably generate a higher revenue or maybe vice-versa. In this segment we can find out correlation between the two and the degree of correlation using the given data.
+
+A scatterplot `sns.scatterplot(train['budget'], train['revenue'])` is used to figure out the relation between the revenue and budget. We cannot really figure out the relation. 
+
+
+Now we compare the log transformed budget and revenue to check for a relation between the two.
+
+
+
+
+
 
