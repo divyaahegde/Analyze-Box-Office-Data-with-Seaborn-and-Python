@@ -75,7 +75,10 @@ So what we can do is use seaborn to create a subplot of two plots side by side w
 
 We can all agree that in most cases, there is a correlation between the budget of a film and the revenue generated. If the film had a higher budget, it would probably generate a higher revenue or maybe vice-versa. In this segment we can find out correlation between the two and the degree of correlation using the given data.
 
+![download (1)](https://user-images.githubusercontent.com/66896597/87536378-a0106d00-c6b6-11ea-8425-f07817f0a5e1.png)
+
 A scatterplot `sns.scatterplot(train['budget'], train['revenue'])` is used to figure out the relation between the revenue and budget. We cannot really figure out the relation. 
+
 
 
 Now we compare the log transformed budget and revenue to check for a relation between the two.
