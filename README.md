@@ -90,7 +90,15 @@ We use **.loc** to find out if a particular film has a homepage. This can be don
 
 As train['has_homepage'] is a categorical function, we can use catplot from seaborn to create our visualization. 
 
+![download (4)](https://user-images.githubusercontent.com/66896597/87540532-7c045a00-c6bd-11ea-96ff-f9352515e6b7.png)
+
 From the figure, we find out that films without a homepage *(left)* generate a lower revenue compared to the ones with a homepage *(right)*.
+
+### Distribution of Languages in Films
+
+In this section, we will find out the distribution of languages in film. We will do this by locating a column *original_language* from the train dataset and filter in only those languages which are common using the function **value_counts()** from pandas like we did in the previous section and store all this data in a variable *language_data*. now we can plot the revenue vs language distribution using boxplots. Boxplot is a great way to identify outliers if there exist any. As per usual, we will be plotting two subplots. Here we are taking a look at mean revenue per language in a film. We can compare it to the subplot which will be log_revenue per language in a film. 
+
+
 
 
 
