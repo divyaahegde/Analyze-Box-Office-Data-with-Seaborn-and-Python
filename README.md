@@ -187,7 +187,7 @@ You can start off by creating two variables for train and test datasets.
 
 Import plotly in notebook mode
 
-Plotly makes complex data visualization simple. So first define the data which is done by combining d1 and d2 into a list.
+Plotly makes complex data visualization simple. So first define the data which is done by combining d1 and d2 into a list. 
             
            
             
