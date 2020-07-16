@@ -153,7 +153,7 @@ From this analysis, we can find out what features have an impact on the revenue 
 
 Hope you liked this **internship project I did in reference with the DLithe internship program (@www.dlithe.com)**
 
-*By Divya Hegde.*
+By Divya Hegde.
 
 
 
